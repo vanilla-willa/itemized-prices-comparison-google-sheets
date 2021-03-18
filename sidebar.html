@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      details > summary:hover{
+        color: #ffcd03;
+      }
+      div.image {
+        display: flex;
+        justify-content: center;
+      }
+      div.image:hover{
+        border: 5px solid #ffcd03;
+      }
+    </style>
+  </head>
+  <body>
+    <details>
+      <summary><b> Click to see dropdown instructions.</b></summary>
+      <br>
+      Note: See 'data' sheet for example.
+      <ol> 
+        <li> Have a sheet with only two columns. </li>
+        <li> Mark categories with colored cells, if applicable. </li>
+        <li> List items and pricing underneath the categories. Items in the first column, pricing in the second column. </li>
+        <ul>
+          <li> Pricing should be formatted in currency, ie. $XXX.XX. Use the format tool.
+        </ul>
+        <li> Scripts use your active sheet. Go to the sheet with pricing data before trying to run scripts. </li>
+        <li> Click on the shortcut buttons to add or remove Pikachu shortcuts from the sheet. </li>
+        <li> Click on the surprised Pikachu images to automatically generate a new sheet with either expanding rows or columns.
+          <ul>
+            <li> The new sheet will be automatically named to the current day and time (in PST) in the format of yyyy-MM-dd HH:mm:ss. Feel free to rename.</li>
+            <li> On the newly created sheets, the items are grouped under categories. You can expand the corresponding row or column to see the items. </li>
+        <li> For each item, there is a checkbox. Select the desired checkbox(es). In the 'Total' row or column, the sum of the items should appear. </li>
+          </ul>
+      </ol>
+    </details>
+    <br>
+    <div class="image">
+      <img src="https://i.imgur.com/iIJ5fDI.png" 
+        alt="Click to add shortcuts"
+        onclick='callScript("add")'/>
+    </div>
+    <br>
+    <div class="image">
+      <img src="https://i.imgur.com/4wbSA9K.png" 
+        alt="Expanding Column Surprised Pikachu Image" 
+        width="280" height="210"
+        onclick='callScript("column")'/>
+    </div>
+    <br>
+    <div class="image">
+      <img src="https://i.imgur.com//Tz5jXsS.png" 
+        alt="Expanding Row Surprised Pikachu Image"
+        width="238" height="210" 
+        onclick='callScript("row")'/>
+    </div>
+    <br>
+    <div class="image">
+      <img src="https://i.imgur.com/2Rvzw8L.png" 
+        alt="Click to remove shortcuts"
+        onclick='callScript("remove")'/>
+    </div>
+    <script>
+      function callScript(type) {
+        google.script.run.withSuccessHandler(success).withFailureHandler(fail).confirmRunScript(type);
+      }
+      function success() {console.log("Script completed running!");}
+      function fail(e) {alert("Trying to run script failed :( Error message: " + e);}
+    </script>
+  </body>
+</html>
