@@ -37,3 +37,9 @@ Some basic error handling:
 
 Future ToDos:
 - [ ] The user can have multiple list sources to generate sheet.
+
+## Screenshots & Gifs
+TBD :D
+
+## Live Demo
+https://docs.google.com/spreadsheets/d/1T2nYpsmoaYgHwHFjTZtoi5HJ944XGn5mbtnZspb2YxA/edit?usp=sharing
