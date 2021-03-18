@@ -37,6 +37,7 @@ Some basic error handling:
 
 Future ToDos:
 - [ ] The user can have multiple list sources to generate sheet.
+- [ ] Clean up saved data in PropertiesService when sheet is deleted
 
 ## Screenshots & Gifs
 
