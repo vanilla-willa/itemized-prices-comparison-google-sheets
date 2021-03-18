@@ -39,7 +39,14 @@ Future ToDos:
 - [ ] The user can have multiple list sources to generate sheet.
 
 ## Screenshots & Gifs
-TBD :D
+
+![Image of Add Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/dialog-clicktoadd.png)
+<br />
+![Image of Remove Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/dialog-clicktoremove.png)
+<br />
+<img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingrowspika-510x450.png" width="227" height="200">
+<br />
+<img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingcolumnspika-600x450.png" width="266" height="200">
 
 ## Live Demo
 https://docs.google.com/spreadsheets/d/1T2nYpsmoaYgHwHFjTZtoi5HJ944XGn5mbtnZspb2YxA/edit?usp=sharing
