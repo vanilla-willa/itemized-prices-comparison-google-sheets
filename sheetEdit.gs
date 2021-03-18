@@ -1,12 +1,13 @@
 function onEdit(e) {
-    // get spreadsheet
+    // get sheet
     const sheet = e.source.getActiveSheet();
-    const sheetName = sheet.getSheetName();
+    // const sheetName = sheet.getSheetName();
+    const sheetId = sheet.getSheetId();
     const currentRange = sheet.getActiveRange();
   
-    if (sheetName == PropertiesService.getScriptProperties().getProperty('dataSource')) return; 
+    if (sheetId == parseInt(PropertiesService.getScriptProperties().getProperty('dataSourceId'))) return;
     if (currentRange.isChecked() == null) return;
-  
+    
     const currentCell = currentRange.getA1Notation();
     const currentCol = currentCell.match(/[a-zA-Z]+/)[0];
     const currentRow = Number(currentCell.match(/\d+/)[0]);

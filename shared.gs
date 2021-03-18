@@ -30,7 +30,7 @@ function col2row(column) {
   }
   
   function pricingData() {
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(PropertiesService.getScriptProperties().getProperty('dataSource'));
+    const sheet = getSheetById(parseInt(PropertiesService.getScriptProperties().getProperty('dataSourceId')))
     const lastRow = sheet.getLastRow();
     const range = sheet.getDataRange();
     const data = range.getValues();

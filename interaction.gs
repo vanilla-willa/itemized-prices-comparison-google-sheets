@@ -40,6 +40,7 @@ function addShortcut() {
     .setAnchorCellYOffset(15)
     .setHeight(180).setWidth(240)
     .assignScript('expandColumnHelper');
+  SpreadsheetApp.flush();
 }
 
 function removeShortcut() {
@@ -54,14 +55,18 @@ function expandColumnHelper() {confirmRunScript("column");}
 
 function confirmRunScript(type) {
   var ui = SpreadsheetApp.getUi();
-  const sheetName = SpreadsheetApp.getActiveSpreadsheet().getSheetName();
-  const valid = checkSheetValid(sheetName)
+  // const sheetName = SpreadsheetApp.getActiveSpreadsheet().getSheetName();
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const sheetId = sheet.getSheetId();
+  const valid = checkSheetValid(sheetId)
   if (!valid) return;
 
+  const sheetName = sheet.getSheetName();
   var response = ui.alert('Confirm Action', `Are you sure you would like to run this script on the sheet named ${sheetName}?`, ui.ButtonSet.OK_CANCEL);
+  
   // process input
   if (response == ui.Button.OK) {
-    PropertiesService.getScriptProperties().setProperty('dataSource', sheetName);
+    PropertiesService.getScriptProperties().setProperty('dataSourceId', sheetId.toString());
     if (type == "column") createExpandColumnTemplate();
     else if (type == "row") createExpandRowTemplate();
     else if (type == "add") addShortcut();
@@ -70,9 +75,11 @@ function confirmRunScript(type) {
   else ui.alert("Mission Aborted", "Running script cancelled.", ui.ButtonSet.OK)
 }
 
-function checkSheetValid(sheetName) {
+function checkSheetValid(id) {
   var ui = SpreadsheetApp.getUi();
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+  //var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheetName);
+  var sheet = getSheetById(id)
+  var sheetName = sheet.getSheetName();
   var msg =  `Data format is invalid for sheet named ${sheetName}. Please run the script when you're in the correct sheet or format your sheet to have one column of items and one column of prices.`
 
   if (sheet.getRange('A1').getBackground() == '#fff2cc') {
