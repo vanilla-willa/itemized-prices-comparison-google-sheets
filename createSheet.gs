@@ -166,7 +166,7 @@ function createExpandColumnTemplate() {
     if (sheet.getRange('A1').getBackground() == '#fff2cc') {
       categoryRows = categoryRows.map(categoryRows => categoryRows -= 10)
     }
-    else categoryRows = categoryRows.map(categoryRows => categoryRows += 10)
+    else categoryRows = categoryRows.map(categoryRows => categoryRows += 1)
   
     // A column of values is represented in Apps Script as [['a'], ['b'], ['c']]. 
     // A row is represented as [['a', 'b', 'c']].
