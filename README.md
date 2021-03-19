@@ -21,7 +21,7 @@ Note: This was designed to be published as a private or unlisted add-on. But aft
   - Listed under the category with the colored cell:
     - Item is in the first column
     - Pricing formatted in $XXX.XX (using the built-in Number format tool) is in the second column
-- When the user loads the spreadsheet, a shortcut menu named 'Surprised Pikachu' shows up in the menu bar to access the scripts.
+- When the user loads the spreadsheet, a menu named 'Surprised Pikachu' shows up in the menu bar to access the scripts.
 - When the user uses the menu dropdown, they can run the main scripts directly or open a Pokemon-themed sidebar panel to either run the main scripts or embed a shortcut to their source data for quick access.
 - If the user embeds a shortcut, 11 rows of colored cells will be added to the top of the sheet, and shortcut images with scripts will be added to those rows.
 - The user can only use scripts on the currently active sheet.
@@ -54,4 +54,5 @@ Not Supported:
 | <img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingcolumnspika-600x450.png" width="266" height="200"> | ![Gif of Expanding Columns](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/gifs/expandcolumns.gif)
 
 ## Live Demo
+Note: You need to be logged into your Google account for the scripts to work + to see the 'Surprised Pikachu' menu & sidebar.
 https://docs.google.com/spreadsheets/d/1T2nYpsmoaYgHwHFjTZtoi5HJ944XGn5mbtnZspb2YxA/edit?usp=sharing
