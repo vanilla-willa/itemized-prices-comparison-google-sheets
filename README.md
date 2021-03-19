@@ -1,6 +1,5 @@
 # Compare Price Options on Google Sheets
 
-
 ## Background
 Google Sheets is used to organize data collaboratively and privately. Many times, people use Google Sheets or Excel sheets to do financial calculations and evaluations. Usually, basic techniques would be to use built-in formulas, such as `COUNT()` or `SUM()`, while more advanced techniques would involve things like pivot tables, Vlookups, Index Match, conditional formatting. But at some point, the task may be more complex, formulas can become a pain to maintain, or the user may just be doing the same thing repetitively (such as doing different variations of `= SUM(A1, A2, A5...)` multiple times throughout the sheet).
 
@@ -9,9 +8,9 @@ I wanted to a create a multi-purpose solution to simplify the interface of compa
 Using this list of items and the items' corresponding prices as the database, a new sheet with checkboxes is generated. Checkmarking a box will retrieve the price from the database; checkmarking multiple boxes will calculate the total of all the checked boxes. The total price of all boxes checked will be outputted in the last cell in that row or column.
 <br /> <br />
 There are two main scripts that either generate a script with the categorized items in rows or with the categorized items into columns. The categorized items in rows is generally better for vertically-oriented monitors, while the categorized items in columns is generally better for horizontally-oriented monitors.
-<br /> </br>
+<br /> <br />
 Use cases I had in mind were applied to collaborative or personal budgeting (ie. planning an itinerary and comparing total costs for different variations) or summing up IOUs to charge friend(s) one lump sum on Venmo.  
-Note: This is by no means an elegant solution. Instead, it was a project fueled by personal curiosity of Apps Script (with some level in development + having done VBA and a ton of Excel in previous roles) and being struck by the idea as I watched my partner try to guesstimate expenses for an upcoming trip.
+Note: This is by no means an elegant solution. Instead, it was a project fueled by personal curiosity of Apps Script (with some level in development + having done VBA and a ton of Excel in previous roles) and being struck by the idea as I watched my partner crunch variations of expenses and plans for an upcoming trip.
 
 ## Features
 Note: This was designed to be published as a private or unlisted add-on. But after development, I found that because Google has moved the process of publishing add-ons from the Chrome Web Store to G Suite Marketplace SDK, publishing a private or unlisted add-on (for anyone in any domain to use) is pretty much impossible. To publish, there are additional things that need to be submitted, such as a Terms of Service, to go through their approval process.
@@ -30,24 +29,29 @@ Note: This was designed to be published as a private or unlisted add-on. But aft
 - The user can rename their sheets without breaking the scripts.
 - The user will be able to expand and collapse categories in these script-generated sheets to view the items and use the checkboxes.
 - The user can check multiple boxes to get the total of the items checked, without needing to look at the original list.
+- The user can only add columns to expanding row sheets and add rows to expanding column sheets for the scripts to function accordingly.
 
 Some basic error handling:
 - When the user tries to run a script on a sheet formatted incorrectly, user will get a error popup.
 - To prevent accidental clicks on the images, any time the images are clicked, user will get a popup to confirm whether they meant to click on the script.
+- If the user tries to add incorrectly (add rows to expanding row sheets and add columns to expanding column sheets), user will be able to add but will get a prompt telling them to undo since the script wouldn't work properly.
 
 Future ToDos:
 - [ ] The user can have multiple list sources to generate sheet.
-- [ ] Clean up saved data in PropertiesService when sheet is deleted
+- [ ] Store each sheet by ID and its respective properties to be independent from other sheets
+- [ ] Clean up saved data in PropertiesService when sheet is deleted.
+
+Not Supported:
+- Preventing user error in adding rows to expanding row sheets and adding columns to expanding column sheets
 
 ## Screenshots & Gifs
 
-![Image of Add Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/dialog-clicktoadd.png)
-<br />
-![Image of Remove Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/dialog-clicktoremove.png)
-<br />
-<img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingrowspika-510x450.png" width="227" height="200">
-<br />
-<img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingcolumnspika-600x450.png" width="266" height="200">
+| Icon | Gif Demo |
+| ---- | --- |
+| ![Image of Add Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/dialog-clicktoadd.png) | ![Gif of Add Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/gifs/addshortcuts.gif) |
+| ![Image of Remove Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/dialog-clicktoremove.png) | ![Gif of Remove Dialog](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/gifs/removeshortcuts.gif) |
+| <img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingrowspika-510x450.png" width="227" height="200"> | ![Gif of Expanding Rows](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/gifs/expandrows.gif) |
+| <img src="https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/assets/expandingcolumnspika-600x450.png" width="266" height="200"> | ![Gif of Expanding Columns](https://github.com/vanilla-willa/itemized-prices-comparison-google-sheets/blob/main/gifs/expandcolumns.gif)
 
 ## Live Demo
 https://docs.google.com/spreadsheets/d/1T2nYpsmoaYgHwHFjTZtoi5HJ944XGn5mbtnZspb2YxA/edit?usp=sharing
