@@ -18,8 +18,8 @@ function showSidebar() {
 function addShortcut() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   const ui = SpreadsheetApp.getUi();
+
   // check if shortcut cells have been added
-  const backgrounds = sheet.getRange('A1:B11').getBackgrounds();
   if (sheet.getRange('A1').getBackground() == '#fff2cc') {
     ui.alert('Shortcut Already Exists', 'Seems like shortcuts already exist. Please click on the shortcut removal to remove and then try again.', ui.ButtonSet.OK)
     return;
@@ -35,6 +35,7 @@ function addShortcut() {
     .setAnchorCellYOffset(15)
     .setHeight(180).setWidth(204)
     .assignScript('expandRowHelper');
+  SpreadsheetApp.flush();
   sheet.insertImage(expandingColumnImg, 1, 1)
     .setAnchorCellXOffset(230)
     .setAnchorCellYOffset(15)
@@ -45,9 +46,18 @@ function addShortcut() {
 
 function removeShortcut() {
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const ui = SpreadsheetApp.getUi();
+  const background = sheet.getRange('A1').getBackground();
+  const values = sheet.getRange('A1:B11').getValues();
+
+  // check for background
+  if (background != '#fff2cc') {
+    ui.alert('No Shortcut Detected', 'Seems like shortcuts were already removed.', ui.ButtonSet.OK)
+    return;
+  }
   button = sheet.getImages();
   button.map((b) => b.remove());
-  sheet.deleteRows(1, 11)
+  sheet.deleteRows(1, 11);
 }
 
 function expandRowHelper() {confirmRunScript("row");}

@@ -7,6 +7,7 @@
 function createExpandColumnTemplate() {
     const spreadsheet = SpreadsheetApp.getActiveSpreadsheet()
     const sheet = spreadsheet.getActiveSheet();
+    const sheetId = sheet.getSheetId();
     const lastRow = sheet.getLastRow();
     const range = sheet.getRange('A:A');
     // only get data with values
